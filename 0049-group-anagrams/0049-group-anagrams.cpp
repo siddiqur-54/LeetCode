@@ -3,7 +3,7 @@ public:
     vector<vector<string>> groupAnagrams(vector<string>& strs) {
         
         int n=strs.size();
-        map<string,vector<string>>res;
+        unordered_map<string,vector<string>>res;
         vector<vector<string>>ans;
         string str;
         
