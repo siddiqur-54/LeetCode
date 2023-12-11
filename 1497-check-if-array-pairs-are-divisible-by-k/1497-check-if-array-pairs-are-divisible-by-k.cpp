@@ -2,7 +2,7 @@ class Solution {
 public:
     bool canArrange(vector<int>& arr, int k) {
         int n=arr.size(), remainder, index, complement;
-        vector<int>frequency(k, 0);
+        unordered_map<int,int>frequency;
         bool ans;
         
         for(int i=0; i<n; i++) {
