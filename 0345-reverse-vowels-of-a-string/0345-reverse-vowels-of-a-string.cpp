@@ -1,35 +1,27 @@
 class Solution {
 public:
+    bool isVowel(char c) {
+        string vowel = "aeiouAEIOU";
+        return vowel.find(c) != string::npos;
+    }
+    
     string reverseVowels(string s) {
         
-        int n=s.size();
-        int i=0;
-        int j=n-1;
-        bool bi,bj;
-        char temp;
+        int n = s.size();
+        int low = 0;
+        int high = n-1;
         
-        bi=false; bj=false;
-        while(i<j) {
-            if(s[i]=='a'||s[i]=='e'||s[i]=='i'||s[i]=='o'||s[i]=='u'||s[i]=='A'||s[i]=='E'||s[i]=='I'||s[i]=='O'||s[i]=='U') {
-                bi=true;
+        while(low < high) {
+            while(low < high && !isVowel(s[low])) {
+                low++;
             }
-            else {
-                i++;
+            while(low < high && !isVowel(s[high])) {
+                high--;
             }
             
-            if(s[j]=='a'||s[j]=='e'||s[j]=='i'||s[j]=='o'||s[j]=='u'||s[j]=='A'||s[j]=='E'||s[j]=='I'||s[j]=='O'||s[j]=='U') {
-                bj=true;
-            }
-            else {
-                j--;
-            }
-            if(bi==true&&bj==true) {
-                temp=s[i];
-                s[i]=s[j];
-                s[j]=temp;
-                bi=false; bj=false;
-                i++; j--;
-            }
+            swap(s[low], s[high]);
+            low++;
+            high--;
         }
         
         return s;
